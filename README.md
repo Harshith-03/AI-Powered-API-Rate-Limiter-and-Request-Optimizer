@@ -18,6 +18,10 @@ This project implements an **AI-powered API rate limiter** and **request optimiz
 - **AWS EC2**: Cloud service used for deploying the application.
 - **Git & GitHub**: Version control system and code hosting platform.
 
+## Files
+- **app.py**: Consists of an API request function using FastAPI, generates logs in a JSON file for the machine learning model to train on.
+- **train_model.py**: Checks content from the saved JSON file, reads the IP and Timestamp from each log to train the model on. The model used here is a simple rate limiting model, counts requests per IP. The model is saved as a pickle file.
+  
 ## Installation
 
 ### Prerequisites
