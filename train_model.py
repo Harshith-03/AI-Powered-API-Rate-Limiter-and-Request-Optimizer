@@ -8,19 +8,19 @@ def train_model():
 
     # Check if file exists
     if not os.path.exists(json_file):
-        print(f"❌ Error: {json_file} does not exist.")
+        print(f"Error: {json_file} does not exist.")
         return
 
     # Check if file is empty
     if os.stat(json_file).st_size == 0:
-        print(f"❌ Error: {json_file} is empty.")
+        print(f"Error: {json_file} is empty.")
         return
 
     try:
         # Print raw file content before reading
         with open(json_file, "r", encoding="utf-8") as f:
             content = f.read()
-            print("📂 JSON File Content Before Parsing:\n", content)
+            print("JSON File Content Before Parsing:\n", content)
 
         # Load JSON to check if it's valid
         with open(json_file, "r", encoding="utf-8") as f:
@@ -31,7 +31,7 @@ def train_model():
 
         # Check if DataFrame is empty
         if df.empty:
-            print("❌ Error: No valid data in api_logs.json.")
+            print("Error: No valid data in api_logs.json.")
             return
 
         # Convert timestamp to datetime
@@ -46,12 +46,12 @@ def train_model():
         with open("rate_limit_model.pkl", "wb") as f:
             pickle.dump(model, f)
 
-        print("✅ Model training complete. Saved as rate_limit_model.pkl.")
+        print("Model training complete. Saved as rate_limit_model.pkl.")
 
     except json.JSONDecodeError as e:
-        print("❌ JSON Decode Error:", e)
+        print("JSON Decode Error:", e)
     except ValueError as e:
-        print("❌ Pandas JSON Error:", e)
+        print("Pandas JSON Error:", e)
 
 train_model()
 
